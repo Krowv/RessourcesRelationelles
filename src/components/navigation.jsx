@@ -14,7 +14,7 @@ export function TabNavigator() {
                     tabBarIcon: ({focused}) => (
                         <Image
                             style={{
-                                tintColor: focused ? '#1a0dab' : "",
+
                                 height: 24,
                                 width: 24,
                             }}
@@ -33,7 +33,7 @@ export function TabNavigator() {
                     tabBarIcon: ({focused}) => (
                         <Image
                             style={{
-                                tintColor: focused ? '#1a0dab' : "",
+
                                 height: 24,
                                 width: 24,
                             }}
