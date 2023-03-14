@@ -19,7 +19,7 @@ export const Article = (props) => {
             </View>
             <View style={styles.titleText}>
                 <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid fugit nulla providen..
+                    {props.textZone}
                 </Text>
             </View>
             <Button title={"Voir plus"}/>
