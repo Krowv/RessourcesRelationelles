@@ -1,7 +1,6 @@
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import { HomePage } from "../sections/HomePage";
-import { NewPage } from "../sections/NewPage";
-import { ProfilePage } from "../sections/ProfilePage";
+import { HelloWorld} from "../sections/HelloWorld";
 const Tab = createBottomTabNavigator();
 import {Image} from 'react-native';
 export function TabNavigator() {
@@ -28,9 +27,9 @@ export function TabNavigator() {
             />
             <Tab.Screen
                 name="New Page"
-                component={NewPage}
+                component={HelloWorld}
                 options={{
-                    title:'Magasin',
+                    title:'Accueil',
                     tabBarIcon: ({focused}) => (
                         <Image
                             style={{
@@ -40,25 +39,6 @@ export function TabNavigator() {
                             }}
                             source= {{
                                 uri: "https://cdn-icons-png.flaticon.com/512/126/126083.png",
-                            }}
-                        />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Profile page"
-                component={ProfilePage}
-                options={{
-                    title:'Profil',
-                    tabBarIcon: ({focused}) => (
-                        <Image
-                            style={{
-                                tintColor: focused ? '#1a0dab' : "",
-                                height: 24,
-                                width: 24,
-                            }}
-                            source= {{
-                                uri: "https://cdn-icons-png.flaticon.com/512/16/16363.png",
                             }}
                         />
                     ),
