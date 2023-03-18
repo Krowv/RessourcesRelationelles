@@ -2,7 +2,6 @@ import {ScrollView, Image, StyleSheet, Text, View, TextInput} from 'react-native
 import SelectDropdown from 'react-native-select-dropdown';
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
-
 export function ArticlePage(props) {
     const countries = ["Egypt", "Canada", "Australia", "Ireland", "France"]
     const [department, setDepartment] = useState([]);
@@ -119,7 +118,32 @@ export function ArticlePage(props) {
                 />
             </View>
         </ScrollView>
-
+    );
+}
+export function NewArticlePage() {
+    return (
+        <ScrollView>
+            <View>
+                <Text style={styles.newInputLabel}>
+                    Titre de l'article
+                </Text>
+                <TextInput
+                    style={styles.newInput}
+                    placeholder="Pseudo"/>
+                <Text style={styles.newInputLabel}>
+                    Contenu de l'article
+                </Text>
+                <TextInput
+                    style={styles.newInputContent}
+                />
+            </View>
+            <View>
+                <Text style={styles.label}>Visibilité :</Text>
+                {/*<CheckBox
+                    style={styles.checkbox}
+                />*/}
+            </View>
+        </ScrollView>
     );
 }
 
@@ -160,7 +184,42 @@ const styles = StyleSheet.create({
         backgroundColor: "#a2d9db",
         borderColor: "#a2d9db",
         width: '100%'
-    }
+    },
+    newInputLabel: {
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 20,
+        fontSize: 16
+    },
+    newInput: {
+        marginLeft: 20,
+        marginRight: 20,
+        borderBottomWidth : 1,
+        borderTopWidth : 1,
+        borderLeftWidth : 1,
+        borderRightWidth : 1,
+        padding: 10,
+        paddingLeft: 20,
+        borderRadius: 10,
+        marginTop: 10,
+        backgroundColor: "white",
+        borderColor: "#a2d9db"
+    },
+    newInputContent: {
+        marginLeft: 20,
+        marginRight: 20,
+        borderBottomWidth : 1,
+        borderTopWidth : 1,
+        borderLeftWidth : 1,
+        borderRightWidth : 1,
+        padding: 10,
+        paddingLeft: 20,
+        borderRadius: 10,
+        marginTop: 10,
+        backgroundColor: "white",
+        borderColor: "#a2d9db",
+        height: 500,
+    },
 })
 
 
