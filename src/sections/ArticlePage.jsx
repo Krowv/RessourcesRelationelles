@@ -1,7 +1,8 @@
-import {ScrollView, Image, StyleSheet, Text, View, TextInput} from 'react-native';
+import {ScrollView, Image, StyleSheet, Text, View, TextInput, Button} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
+import CheckBox from '@react-native-community/checkbox';
 export function ArticlePage(props) {
     const countries = ["Egypt", "Canada", "Australia", "Ireland", "France"]
     const [department, setDepartment] = useState([]);
@@ -121,8 +122,32 @@ export function ArticlePage(props) {
     );
 }
 export function NewArticlePage() {
+    const [toggleCheckBox, setToggleCheckBox] = useState(false);
+    const [categorys, setCategorys] = useState(["Jeux Vidéo", "Sport", "Musique", "Cinéma", "Santé", "Technologie", "Politique", "Société", "Culture", "Economie", "Environnement", "Littérature", "Art", "Histoire", "Religion", "Philosophie", "Sciences", "Autres"]);
     return (
         <ScrollView>
+            <View>
+                <Text style={styles.newInputLabel}>
+                    Catégorie de l'article
+                </Text>
+                <SelectDropdown
+                    data={categorys}
+                    buttonStyle={styles.dropdown1BtnStyle}
+                    onSelect={(selectedItem, index) => {
+                        console.log(selectedItem, index)
+                    }}
+                    buttonTextAfterSelection={(selectedItem, index) => {
+                        // text represented after item is selected
+                        // if data array is an array of objects then return selectedItem.property to render after item is selected
+                        return selectedItem
+                    }}
+                    rowTextForSelection={(item, index) => {
+                        // text represented for each item in dropdown
+                        // if data array is an array of objects then return item.property to represent item in dropdown
+                        return item
+                    }}
+                />
+            </View>
             <View>
                 <Text style={styles.newInputLabel}>
                     Titre de l'article
@@ -138,10 +163,10 @@ export function NewArticlePage() {
                 />
             </View>
             <View>
-                <Text style={styles.label}>Visibilité :</Text>
-                {/*<CheckBox
-                    style={styles.checkbox}
-                />*/}
+                <Button
+                    style={styles.newButton}
+                    title={"Créer l'article"}
+                />
             </View>
         </ScrollView>
     );
@@ -219,6 +244,15 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         borderColor: "#a2d9db",
         height: 500,
+    },
+    newButton: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 25,
+        borderRadius: 10,
+        backgroundColor: "#a2d9db",
+        width: '33%',
     },
 })
 
