@@ -1,6 +1,9 @@
 import {Button, Image, StyleSheet, Text, View} from "react-native";
 
 export const Article = (props) => {
+
+
+
     return (
         <View style={styles.border}>
             <Image
@@ -22,7 +25,8 @@ export const Article = (props) => {
                     {props.textZone}
                 </Text>
             </View>
-            <Button title={"Voir plus"}/>
+
+            <Button title={"Voir plus"} onPress={props.button}/>
         </View>
     )
 }

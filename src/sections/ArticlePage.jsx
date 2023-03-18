@@ -1,4 +1,4 @@
-import {ScrollView, Image, StyleSheet, Text, View, TextInput} from 'react-native';
+import {ScrollView, Image, StyleSheet, Text, View, TextInput, Button, Pressable} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
@@ -17,7 +17,9 @@ export function ArticlePage(props) {
             })
     }, [])
     return (
-        <ScrollView>
+        <ScrollView style={{
+            backgroundColor:"white"
+        }}>
             <View style={styles.bigTitle}>
                 <Text style={styles.textBigTitle}>
                     Pourquoi jouer aux jeux vidéo en couple est sain
@@ -68,36 +70,13 @@ export function ArticlePage(props) {
             }}>
             </View>
             <View>
-                <Text style={{
-                    marginLeft: 20,
-                    marginRight: 20,
-                    marginTop: 20,
-                    fontSize: 16
-                }}>
+                <Text style={styles.labelForTextInput}>
                     Votre Pseudo
                 </Text>
                 <TextInput
-                    style={{
-                        marginLeft: 20,
-                        marginRight: 20,
-                        borderBottomWidth : 1,
-                        borderTopWidth : 1,
-                        borderLeftWidth : 1,
-                        borderRightWidth : 1,
-                        padding: 10,
-                        paddingLeft: 20,
-                        borderRadius: 10,
-                        marginTop: 10,
-                        backgroundColor: "#a2d9db",
-                        borderColor: "#a2d9db"
-                    }}
+                    style={styles.textInput}
                     placeholder="Pseudo"/>
-                <Text style={{
-                    marginLeft: 20,
-                    marginRight: 20,
-                    marginTop: 20,
-                    fontSize: 16
-                }}>
+                <Text style={styles.labelForTextInput}>
                     Votre Département
                 </Text>
                 <SelectDropdown
@@ -117,6 +96,48 @@ export function ArticlePage(props) {
                         return item
                     }}
                 />
+                <Text
+                style={styles.labelForTextInput}>
+                    Votre commentaire
+                </Text>
+                <TextInput
+                    style={styles.textInput}
+                    multiline={true}
+                    numberOfLines={6}
+                />
+                <View style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                    <Pressable
+                        style={styles.buttonForm}>
+                        <Text style={{
+                            textAlign:'center',
+                            padding: 10,
+                        }}>
+                            Envoyer
+                        </Text>
+                    </Pressable>
+                </View>
+            </View>
+            <View style={styles.vueComment}>
+                <View>
+                    <Text
+                        style={{
+                            fontWeight: "bold"
+                        }}>
+                        Georgette - Bas-Rhin (67)
+                    </Text>
+                    <Text>
+                        Je suis d'accord avec cet article
+                    </Text>
+                </View>
+                <View>
+                    <Text>
+                        23/05/22
+                    </Text>
+                </View>
             </View>
         </ScrollView>
 
@@ -146,7 +167,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: "bold"
     },
-    dropdown1BtnStyle: {
+    textInput: {
         marginLeft: 20,
         marginRight: 20,
         borderBottomWidth : 1,
@@ -158,8 +179,42 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: 10,
         backgroundColor: "#a2d9db",
+        borderColor: "#a2d9db"
+    },
+    dropdown1BtnStyle: {
+        marginLeft: 20,
+        marginRight: 20,
+        borderBottomWidth : 1,
+        borderTopWidth : 1,
+        borderLeftWidth : 1,
+        borderRightWidth : 1,
+        borderRadius: 10,
+        marginTop: 10,
+        backgroundColor: "#a2d9db",
         borderColor: "#a2d9db",
-        width: '100%'
+        width: '90%'
+    },
+    labelForTextInput: {
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 20,
+        fontSize: 16
+    },
+    buttonForm :{
+        width: '40%',
+        backgroundColor: '#f2ba5c',
+        marginTop: 10,
+        borderRadius: 10
+    },
+    vueComment: {
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginLeft: 10,
+        marginRight: 10,
+        backgroundColor: '#f9f9f9',
+        padding: 10,
+        marginTop: 10
     }
 })
 

@@ -5,12 +5,14 @@ const Tab = createBottomTabNavigator();
 import {Image} from 'react-native';
 import {Search} from "../sections/Search";
 import {ArticlePage} from "../sections/ArticlePage";
+import {HomePageNavigator} from "../app.navigator";
+
 export function TabNavigator() {
     return (
         <Tab.Navigator>
             <Tab.Screen
                 name="Accueil"
-                component={HomePage}
+                component={HomePageNavigator}
                 options={{
                     title:'Accueil',
                     tabBarIcon: ({focused}) => (
