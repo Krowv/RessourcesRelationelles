@@ -1,8 +1,9 @@
+
 import {ScrollView, Image, StyleSheet, Text, View, TextInput, Button, Pressable} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
-
+import CheckBox from '@react-native-community/checkbox';
 export function ArticlePage(props) {
     const countries = ["Egypt", "Canada", "Australia", "Ireland", "France"]
     const [department, setDepartment] = useState([]);
@@ -140,7 +141,56 @@ export function ArticlePage(props) {
                 </View>
             </View>
         </ScrollView>
-
+    );
+}
+export function NewArticlePage() {
+    const [toggleCheckBox, setToggleCheckBox] = useState(false);
+    const [categorys, setCategorys] = useState(["Jeux Vidéo", "Sport", "Musique", "Cinéma", "Santé", "Technologie", "Politique", "Société", "Culture", "Economie", "Environnement", "Littérature", "Art", "Histoire", "Religion", "Philosophie", "Sciences", "Autres"]);
+    return (
+        <ScrollView>
+            <View>
+                <Text style={styles.newInputLabel}>
+                    Catégorie de l'article
+                </Text>
+                <SelectDropdown
+                    data={categorys}
+                    buttonStyle={styles.dropdown1BtnStyle}
+                    onSelect={(selectedItem, index) => {
+                        console.log(selectedItem, index)
+                    }}
+                    buttonTextAfterSelection={(selectedItem, index) => {
+                        // text represented after item is selected
+                        // if data array is an array of objects then return selectedItem.property to render after item is selected
+                        return selectedItem
+                    }}
+                    rowTextForSelection={(item, index) => {
+                        // text represented for each item in dropdown
+                        // if data array is an array of objects then return item.property to represent item in dropdown
+                        return item
+                    }}
+                />
+            </View>
+            <View>
+                <Text style={styles.newInputLabel}>
+                    Titre de l'article
+                </Text>
+                <TextInput
+                    style={styles.newInput}
+                    placeholder="Pseudo"/>
+                <Text style={styles.newInputLabel}>
+                    Contenu de l'article
+                </Text>
+                <TextInput
+                    style={styles.newInputContent}
+                />
+            </View>
+            <View>
+                <Button
+                    style={styles.newButton}
+                    title={"Créer l'article"}
+                />
+            </View>
+        </ScrollView>
     );
 }
 
@@ -195,6 +245,9 @@ const styles = StyleSheet.create({
         width: '90%'
     },
     labelForTextInput: {
+        width: '100%'
+    },
+    newInputLabel: {
         marginLeft: 20,
         marginRight: 20,
         marginTop: 20,
@@ -215,7 +268,45 @@ const styles = StyleSheet.create({
         backgroundColor: '#f9f9f9',
         padding: 10,
         marginTop: 10
-    }
+    },
+    newInput: {
+        marginLeft: 20,
+        marginRight: 20,
+        borderBottomWidth : 1,
+        borderTopWidth : 1,
+        borderLeftWidth : 1,
+        borderRightWidth : 1,
+        padding: 10,
+        paddingLeft: 20,
+        borderRadius: 10,
+        marginTop: 10,
+        backgroundColor: "white",
+        borderColor: "#a2d9db"
+    },
+    newInputContent: {
+        marginLeft: 20,
+        marginRight: 20,
+        borderBottomWidth : 1,
+        borderTopWidth : 1,
+        borderLeftWidth : 1,
+        borderRightWidth : 1,
+        padding: 10,
+        paddingLeft: 20,
+        borderRadius: 10,
+        marginTop: 10,
+        backgroundColor: "white",
+        borderColor: "#a2d9db",
+        height: 500,
+    },
+    newButton: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 25,
+        borderRadius: 10,
+        backgroundColor: "#a2d9db",
+        width: '33%',
+    },
 })
 
 
