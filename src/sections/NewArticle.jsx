@@ -1,25 +1,67 @@
-
 import {ScrollView, Image, StyleSheet, Text, View, TextInput, Button, Pressable} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
-import CheckBox from '@react-native-community/checkbox';
-import {ArticleComponent} from "../components/articleComponent";
 
-export function ArticlePage () {
-    return  (
-        <ArticleComponent
-            bigTitle = "Pourquoi jouer aux jeux vidéo en couple est sain"
-            quickTitle = "What is Lorem Ipsum ?"
-            firstText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi corporis dolorem dolores dolorum, excepturi fugiat fugit illo illum ipsum molestiae molestias quaerat quia, quis, rerum tempora temporibus velit voluptates!"
-            secondTitle = "What is Lorem Ipsum"
-            uri="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
-            secondText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi corporis dolorem dolores dolorum, excepturi fugiat fugit illo illum ipsum molestiae molestias quaerat quia, quis, rerum tempora temporibus velit voluptates!
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi corporis dolorem dolores dolorum, excepturi fugiat fugit illo illum ipsum molestiae molestias quaerat quia, quis, rerum tempora temporibus velit voluptates!
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi corporis dolorem dolores dolorum, excepturi fugiat fugit illo illum ipsum molestiae molestias quaerat"
-        />
-    )
+export function NewArticlePage() {
+    const [toggleCheckBox, setToggleCheckBox] = useState(false);
+    const [categorys, setCategorys] = useState(["Jeux Vidéo", "Sport", "Musique", "Cinéma", "Santé", "Technologie", "Politique", "Société", "Culture", "Economie", "Environnement", "Littérature", "Art", "Histoire", "Religion", "Philosophie", "Sciences", "Autres"]);
+    return (
+        <ScrollView>
+            <View>
+                <Text style={styles.newInputLabel}>
+                    Catégorie de l'article
+                </Text>
+                <SelectDropdown
+                    data={categorys}
+                    buttonStyle={styles.dropdown1BtnStyle}
+                    onSelect={(selectedItem, index) => {
+                        console.log(selectedItem, index)
+                    }}
+                    buttonTextAfterSelection={(selectedItem, index) => {
+                        // text represented after item is selected
+                        // if data array is an array of objects then return selectedItem.property to render after item is selected
+                        return selectedItem
+                    }}
+                    rowTextForSelection={(item, index) => {
+                        // text represented for each item in dropdown
+                        // if data array is an array of objects then return item.property to represent item in dropdown
+                        return item
+                    }}
+                />
+            </View>
+            <View>
+                <Text style={styles.newInputLabel}>
+                    Titre de l'article
+                </Text>
+                <TextInput
+                    style={styles.newInput}
+                    placeholder="Pseudo"/>
+                <Text style={styles.newInputLabel}>
+                    Contenu de l'article
+                </Text>
+                <TextInput
+                    style={styles.newInputContent}
+                />
+            </View>
+            <View>
+                <Pressable style={styles.buttonForm}>
+                    <Text style={{
+                        textAlign: "center",
+                        color: "white",
+                        textTransform: "uppercase",
+                        fontWeight: "bold"
+
+                    }}>
+                        Ajouter l'article
+                    </Text>
+                </Pressable>
+
+            </View>
+        </ScrollView>
+    );
 }
+
 const styles = StyleSheet.create({
     bigTitle: {
         flex: 1,
@@ -83,7 +125,12 @@ const styles = StyleSheet.create({
         width: '40%',
         backgroundColor: '#f2ba5c',
         marginTop: 10,
-        borderRadius: 10
+        padding: 10,
+        textAlign: "center",
+        marginLeft: "auto",
+        marginRight: "auto",
+        borderRadius: 10,
+        marginBottom: 10
     },
     vueComment: {
         flexDirection: "row",

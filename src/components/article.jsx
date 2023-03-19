@@ -1,9 +1,6 @@
-import {Button, Image, StyleSheet, Text, View} from "react-native";
+import {Button, Image, Pressable, StyleSheet, Text, View} from "react-native";
 
 export const Article = (props) => {
-
-
-
     return (
         <View style={styles.border}>
             <Image
@@ -15,18 +12,24 @@ export const Article = (props) => {
                     uri: props.uri,
                 }}
             />
-            <View>
+            <View style={styles.titleZone}>
                 <Text style={styles.titleText}>
                     {props.titleZone}
                 </Text>
             </View>
-            <View style={styles.titleText}>
-                <Text>
-                    {props.textZone}
+            <Pressable style={{
+                padding: 10,
+                backgroundColor: "#f2ba5c"
+            }} onPress={props.button}>
+                <Text style={{
+                    textAlign:"center",
+                    color:"white",
+                    fontWeight:"bold",
+                    fontSize:20
+                }}>
+                    Voir plus
                 </Text>
-            </View>
-
-            <Button title={"Voir plus"} onPress={props.button}/>
+            </Pressable>
         </View>
     )
 }
@@ -40,13 +43,17 @@ const styles = StyleSheet.create({
         margin: 15
     },
     titleText :{
-        fontSize : 25,
+        fontSize : 20,
         borderBottomWidth: 1,
         textAlign: "center",
-        padding: 10
+        padding: 10,
+        color:"white"
     },
     textInArticles : {
         textAlign: "center",
         padding: 5
+    },
+    titleZone :{
+        backgroundColor: '#0eb1b8',
     }
 })

@@ -1,11 +1,10 @@
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import { HomePage } from "../sections/HomePage";
-import { HelloWorld} from "../sections/HelloWorld";
 import {Image} from 'react-native';
-import {Search} from "../sections/Search";
 import {HomePageNavigator} from "../app.navigator";
-import {ArticlePage, NewArticlePage} from "../sections/ArticlePage";
+import {ArticlePage} from "../sections/ArticlePage";
 import {ConnexionPage} from "../sections/ConnexionPage";
+import {NewArticlePage} from "../sections/NewArticle";
+import {Search} from "../sections/Search";
 const Tab = createBottomTabNavigator();
 export function TabNavigator() {
     return (
@@ -30,27 +29,8 @@ export function TabNavigator() {
                 }}
             />
             <Tab.Screen
-                name="New Page"
-                component={HelloWorld}
-                options={{
-                    title:'Accueil',
-                    tabBarIcon: ({focused}) => (
-                        <Image
-                            style={{
-
-                                height: 24,
-                                width: 24,
-                            }}
-                            source= {{
-                                uri: "https://cdn-icons-png.flaticon.com/512/126/126083.png",
-                            }}
-                        />
-                    ),
-                }}
-            />
-            <Tab.Screen
                 name="Recherche"
-                component={ArticlePage}
+                component={Search}
                 options={{
                     title:'Recherche',
                     tabBarIcon: ({focused}) => (

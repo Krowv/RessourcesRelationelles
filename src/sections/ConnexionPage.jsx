@@ -1,4 +1,4 @@
-import {Text, View, TextInput, StyleSheet, Button} from 'react-native';
+import {Text, View, TextInput, StyleSheet, Button, Pressable} from 'react-native';
 import React, {useState} from "react";
 export function ConnexionPage() {
     return (
@@ -24,10 +24,17 @@ export function ConnexionPage() {
                 style={styles.input}
                 placeholder={"Mot de passe"}
             />
-            <Button
-                style={styles.button}
-                title={"Se connecter"}
-            />
+            <Pressable style={styles.buttonForm}>
+                <Text style={{
+                    textAlign: "center",
+                    color: "white",
+                    textTransform: "uppercase",
+                    fontWeight: "bold"
+
+                }}>
+                    Inscription
+                </Text>
+            </Pressable>
         </View>
     );
 }
@@ -39,13 +46,15 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 10,
     },
-    button: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 25,
-        borderRadius: 10,
-        backgroundColor: "#a2d9db",
+    buttonForm :{
+        width: '40%',
+        backgroundColor: '#f2ba5c',
+        marginTop: 10,
+        padding: 10,
+        textAlign: "center",
+        marginLeft: "auto",
+        marginRight: "auto",
+        borderRadius: 10
     },
     title: {
         fontSize: 30,

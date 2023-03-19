@@ -3,23 +3,98 @@ import {ScrollView, Image, StyleSheet, Text, View, TextInput, Button, Pressable}
 import SelectDropdown from 'react-native-select-dropdown';
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
-import CheckBox from '@react-native-community/checkbox';
-import {ArticleComponent} from "../components/articleComponent";
+import {CommentComponent} from "./commentComponent";
+import Video from "react-native-video";
 
-export function ArticlePage () {
-    return  (
-        <ArticleComponent
-            bigTitle = "Pourquoi jouer aux jeux vidéo en couple est sain"
-            quickTitle = "What is Lorem Ipsum ?"
-            firstText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi corporis dolorem dolores dolorum, excepturi fugiat fugit illo illum ipsum molestiae molestias quaerat quia, quis, rerum tempora temporibus velit voluptates!"
-            secondTitle = "What is Lorem Ipsum"
-            uri="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
-            secondText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi corporis dolorem dolores dolorum, excepturi fugiat fugit illo illum ipsum molestiae molestias quaerat quia, quis, rerum tempora temporibus velit voluptates!
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi corporis dolorem dolores dolorum, excepturi fugiat fugit illo illum ipsum molestiae molestias quaerat quia, quis, rerum tempora temporibus velit voluptates!
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi corporis dolorem dolores dolorum, excepturi fugiat fugit illo illum ipsum molestiae molestias quaerat"
-        />
-    )
+
+export const ArticleVideoPageComponent = (props) => {
+
+    const [department, setDepartment] = useState([]);
+    useEffect(() => {
+        // on récupères les départements
+        axios.get("https://geo.api.gouv.fr/departements?zone=metro&fields=nom")
+            .then(res => {
+                res.data.map((note, index) => {
+                    // on push dans le tableau de departements avec la fonction setDepartment
+                    setDepartment(department => [...department, note.code + " - " + note.nom])
+                })
+            })
+    }, [])
+    return (
+        <ScrollView style={{
+            backgroundColor:"white"
+        }}>
+            <View style={styles.bigTitle}>
+                <Text style={styles.textBigTitle}>
+                    {props.bigTitle}
+                </Text>
+            </View>
+            <View>
+                <Text style={styles.titleArticle}>
+                    {props.quickTitle}
+                </Text>
+                <Text style={{
+                    textAlign: "justify",
+                    marginLeft: 20,
+                    marginRight: 20
+                }}>
+                    {props.firstText}
+                </Text>
+                <Text style={styles.titleArticle}>
+                    {props.secondTitle}
+                </Text>
+                <Text style={{
+                    textAlign: "justify",
+                    marginLeft: 20,
+                    marginRight: 20
+                }}>
+                    {props.secondText}
+                </Text>
+            </View>
+            <View style={{
+                flex : 1,
+                alignItems: "center",
+                marginTop: 10
+            }}>
+                <Video source={{uri: "https://www.youtube.com/watch?v=oatf8qQDEoc"}}   // Can be a URL or a local file.
+                />
+            </View>
+
+            <View style={{
+                borderBottomWidth: 1,
+                width: 350,
+                marginLeft: 20,
+                marginRight: 20,
+                borderBottomColor: "yellow"
+            }}>
+            </View>
+
+            <CommentComponent
+                departments = {department}
+            />
+
+            <View style={styles.vueComment}>
+                <View>
+                    <Text
+                        style={{
+                            fontWeight: "bold"
+                        }}>
+                        Georgette - Bas-Rhin (67)
+                    </Text>
+                    <Text>
+                        Je suis d'accord avec cet article
+                    </Text>
+                </View>
+                <View>
+                    <Text>
+                        23/05/22
+                    </Text>
+                </View>
+            </View>
+        </ScrollView>
+    );
 }
+
 const styles = StyleSheet.create({
     bigTitle: {
         flex: 1,
@@ -134,5 +209,3 @@ const styles = StyleSheet.create({
         width: '33%',
     },
 })
-
-
