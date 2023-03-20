@@ -17,7 +17,6 @@ export function TabNavigator() {
                     tabBarIcon: ({focused}) => (
                         <Image
                             style={{
-
                                 height: 24,
                                 width: 24,
                             }}
@@ -40,7 +39,7 @@ export function TabNavigator() {
                                 width: 24,
                             }}
                             source= {{
-                                uri: "https://cdn-icons-png.flaticon.com/512/126/126083.png",
+                                uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png",
                             }}
                         />
                     ),
