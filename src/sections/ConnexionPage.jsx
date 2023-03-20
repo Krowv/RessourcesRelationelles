@@ -1,4 +1,4 @@
-import {Text, View, TextInput, StyleSheet, Button, Pressable} from 'react-native';
+import {Text, View, TextInput, StyleSheet, Pressable} from 'react-native';
 import React from "react";
 export function ConnexionPage() {
     return (
@@ -25,13 +25,7 @@ export function ConnexionPage() {
                 placeholder={"Mot de passe"}
             />
             <Pressable style={styles.buttonForm}>
-                <Text style={{
-                    textAlign: "center",
-                    color: "white",
-                    textTransform: "uppercase",
-                    fontWeight: "bold"
-
-                }}>
+                <Text style={styles.buttonText}>
                     Inscription
                 </Text>
             </Pressable>
@@ -39,6 +33,12 @@ export function ConnexionPage() {
     );
 }
 const styles = StyleSheet.create({
+    buttonText: {
+        textAlign: "center",
+        color: "white",
+        textTransform: "uppercase",
+        fontWeight: "bold"
+    },
     input: {
         height: 40,
         margin: 12,
