@@ -1,11 +1,8 @@
-import {ScrollView, Image, StyleSheet, Text, View, TextInput, Button, Pressable} from 'react-native';
+import {ScrollView, StyleSheet, Text, View, TextInput, Button, Pressable} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
-import React, {useState, useEffect} from 'react';
-import axios from "axios";
-
+import React, {useState} from 'react';
 export function NewArticlePage() {
-    const [toggleCheckBox, setToggleCheckBox] = useState(false);
-    const [categorys, setCategorys] = useState(["Jeux Vidéo", "Sport", "Musique", "Cinéma", "Santé", "Technologie", "Politique", "Société", "Culture", "Economie", "Environnement", "Littérature", "Art", "Histoire", "Religion", "Philosophie", "Sciences", "Autres"]);
+    const [categorys] = useState(["Jeux Vidéo", "Sport", "Musique", "Cinéma", "Santé", "Technologie", "Politique", "Société", "Culture", "Economie", "Environnement", "Littérature", "Art", "Histoire", "Religion", "Philosophie", "Sciences", "Autres"]);
     return (
         <ScrollView>
             <View>
@@ -61,7 +58,6 @@ export function NewArticlePage() {
         </ScrollView>
     );
 }
-
 const styles = StyleSheet.create({
     bigTitle: {
         flex: 1,
@@ -181,5 +177,3 @@ const styles = StyleSheet.create({
         width: '33%',
     },
 })
-
-

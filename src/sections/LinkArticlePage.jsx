@@ -1,6 +1,4 @@
 import {ArticleComponent} from "../components/articleComponent";
-
-
 export function LinkArticlePage (){
     return (
         <ArticleComponent

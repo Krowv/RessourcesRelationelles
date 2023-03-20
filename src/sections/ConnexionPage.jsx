@@ -1,5 +1,5 @@
 import {Text, View, TextInput, StyleSheet, Button, Pressable} from 'react-native';
-import React, {useState} from "react";
+import React from "react";
 export function ConnexionPage() {
     return (
         <View>

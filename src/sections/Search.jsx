@@ -1,9 +1,7 @@
 import {Text, View, ScrollView, StyleSheet, Button, TextInput, Pressable} from 'react-native';
-import React, {useState} from "react";
+import React from "react";
 
 export function Search() {
-    const [isSelected, setIsSelected] = useState(false)
-
     const searchArticles = () => {
         alert("Recherche en cours")
     }

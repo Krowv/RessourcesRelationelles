@@ -1,7 +1,5 @@
-import {Text, View, ScrollView, StyleSheet, Button} from 'react-native';
-import {Image} from "react-native";
+import {View, ScrollView} from 'react-native';
 import {Article} from "../components/article";
-
 export function HomePage({navigation}) {
 
     return (

@@ -4,9 +4,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import {CommentComponent} from "./commentComponent";
-
 export const ArticleComponent = (props) => {
-
     const [department, setDepartment] = useState([]);
     useEffect(() => {
         // on récupères les départements
@@ -27,7 +25,6 @@ export const ArticleComponent = (props) => {
                     {props.bigTitle}
                 </Text>
             </View>
-
             <View>
                 <Text style={styles.titleArticle}>
                     {props.quickTitle}
@@ -98,7 +95,6 @@ export const ArticleComponent = (props) => {
         </ScrollView>
     );
 }
-
 const styles = StyleSheet.create({
     bigTitle: {
         flex: 1,

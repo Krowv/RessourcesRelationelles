@@ -1,7 +1,4 @@
 import {ArticleComponent} from "../components/articleComponent";
-
-
-
 export function VideoArticlePage (){
     return (
         <ArticleComponent
